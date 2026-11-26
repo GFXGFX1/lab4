@@ -16,7 +16,7 @@ items = {
 
 
 def task(items, inv=9):
-    bp_task = [[0] * (inv + 1) for i in range(len(items) + 1)] #споиско списков, пока что только с 0
+    bp_task = [[0] * (inv + 1) for i in range(len(items) + 1)]  # споиско списков, пока что только с 0
     # print(bp_task)
     # таблица
     for row, (weight, value) in enumerate(items.values(),
@@ -30,7 +30,7 @@ def task(items, inv=9):
     # print(bp_task)
     # готовый список-таблица
     # заполняем ячейки рюкзака
-    keys = list(items.keys()) # все буквы предметов
+    keys = list(items.keys())  # все буквы предметов
     place2 = inv
     slot = 0
     for row2 in range(len(items), 0, -1):
@@ -40,9 +40,9 @@ def task(items, inv=9):
             for _ in range(found):
                 backpack[slot].append(key)
                 slot += 1
-            place2 -= found # вычитаем
+            place2 -= found  # вычитаем
     # cчитаем итоговые очки: взятые - невзятые + начальные (10)
-    taken_points = bp_task[-1][-1] #bnjujdst jxrb
+    taken_points = bp_task[-1][-1]  # bnjujdst jxrb
     total_points = sum(v for w, v in items.values())  # сумма очков вообще всех предметов
     not_taken_points = total_points - taken_points  # сумма очков невзятых
     return 10 + taken_points - not_taken_points
@@ -50,6 +50,7 @@ def task(items, inv=9):
 
 points = task(items)
 # Вывод рюкзака сеткой 3x3
-for i in range(0, 9, 3):
-    print(backpack[i], backpack[i + 1], backpack[i + 2])  # принтуется сразу 3 ячейки, затем спускается вниз
+print(backpack[0], backpack[1], backpack[2])
+print(backpack[5], backpack[4], backpack[3])
+print(backpack[6], backpack[7], backpack[8])  # принтуется сразу 3 ячейки, затем спускается вниз змейкой
 print(points)
